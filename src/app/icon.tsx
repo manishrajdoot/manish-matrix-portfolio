@@ -1,30 +1,29 @@
-import { ImageResponse } from 'next/og';
+import type { Metadata } from "next";
+import "./globals.css";
 
-// 1. Favicon ka layout aur size metadata config
-export const size = { width: 32, height: 32 };
-export const contentType = 'image/png';
+export const metadata: Metadata = {
+  title: "Manish Rajdoot | Data Scientist & Programmer Portfolio",
+  description: "Immersive futuristic portfolio showcase featuring advanced data analytics compilation frameworks, PL/SQL trigger systems, and Next.js architectures.",
+  viewport: "width=device-width, initial-scale=1, maximum-scale=1",
+  // ⚡ STATIC FAVICON VECTOR ROUTE DECLARATION
+  icons: {
+    icon: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🥷</text></svg>",
+  },
+};
 
-// 2. High-fidelity Cyber Icon Element Stream Engine
-export default function Icon() {
-  return new ImageResponse(
-    (
-      <div
-        style={{
-          fontSize: 22,
-          background: '#020208',
-          width: '100%',
-          height: '100%',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          borderRadius: '20%',
-          border: '1.5px solid #00ff66',
-          boxShadow: '0 0 10px #00ff66',
-        }}
-      >
-        🥷
-      </div>
-    ),
-    { ...size }
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html lang="en" className="scroll-smooth">
+      <head>
+        <meta name="theme-color" content="#020208" />
+      </head>
+      <body className="antialiased select-none selection:bg-cyan-500/30 selection:text-white">
+        {children}
+      </body>
+    </html>
   );
 }
