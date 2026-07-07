@@ -2,7 +2,11 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 
-export default function ContactForm() {
+interface ContactFormProps {
+  onClose?: () => void;
+}
+
+export default function ContactForm({ onClose }: ContactFormProps) {
   const countryDatabase = [
     { name: 'India', flag: '🇮🇳', code: '+91' },
     { name: 'United States', flag: '🇺🇸', code: '+1' },
@@ -73,6 +77,7 @@ export default function ContactForm() {
         setFormDataState({ firstName: '', lastName: '', email: '', phone: '', message: '' });
         setAttachedFiles([]);
         generateCaptcha();
+        if (onClose) setTimeout(onClose, 2000);
       } else {
         setFormStatus('ERROR');
         setStatusMessage('// EXCEPTION: Server gateway rejected frame formats.');
@@ -85,7 +90,19 @@ export default function ContactForm() {
 
   return (
     <div className="w-full max-w-4xl mx-auto p-6 md:p-10 bg-[#03030c]/95 border border-[#00ff66]/20 rounded-2xl shadow-2xl relative z-10">
-      <div className="mb-6 space-y-1">
+      
+      {/* ✕ CLOSE BUTTON ON TOP RIGHT CORNER */}
+      {onClose && (
+        <button 
+          type="button"
+          onClick={onClose}
+          className="absolute top-4 right-4 text-zinc-500 hover:text-white border border-white/[0.05] hover:border-[#00ff66]/40 rounded-lg px-3 py-1 bg-zinc-950/60 text-[10px] font-mono font-bold tracking-wider transition-all z-20"
+        >
+          [ ✕ CLOSE_GATEWAY ]
+        </button>
+      )}
+
+      <div className="mb-6 space-y-1 pr-24">
         <span className="text-[9px] font-black tracking-[0.3em] text-[#00ff66] bg-emerald-950/40 px-3 py-1 rounded-full uppercase inline-block">// TRANSMISSION TERMINAL</span>
         <h3 className="text-2xl font-black uppercase tracking-wider text-white">Establish Direct Interface Gateway</h3>
       </div>
@@ -171,7 +188,7 @@ export default function ContactForm() {
               {captchaChallenge.token}
             </span>
           </div>
-          <input required type="text" value={userCaptchaInput} onChange={(e) => setUserCaptchaInput(e.target.value)} placeholder="Decrypt Key" className="bg-[#03030c] border border-white/[0.08] focus:border-[#00ff66] text-xs p-2 rounded-lg text-white font-mono w-full sm:w-44 text-center uppercase tracking-widest" />
+          <input required type="text" value={userCaptchaInput} onChange={(e) => userCaptchaInput(e.target.value)} placeholder="Decrypt Key" className="bg-[#03030c] border border-white/[0.08] focus:border-[#00ff66] text-xs p-2 rounded-lg text-white font-mono w-full sm:w-44 text-center uppercase tracking-widest" />
         </div>
 
         <div className="col-span-2 pt-2 space-y-2">
