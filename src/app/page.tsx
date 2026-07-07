@@ -279,23 +279,17 @@ export default function Home() {
           </section>
         </div>
 
-        {/* BLOG MODULE INCUBATOR */}
+        {/* BLOG MODULE */}
         <div ref={blogRef} className="scroll-mt-24">
           <BlogModule />
         </div>
       </div>
 
-      {/* MODAL WRAPPER ON TOP VIEW LEVEL */}
+      {/* CLEAN OVERLAY WITH NO EXTRA INNER BUTTONS OR STRETCHED LAYERS */}
       {showContactModal && (
-        <div className="fixed inset-0 w-screen h-screen z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm overflow-y-auto">
-          <div className="relative w-full max-w-4xl my-auto">
-            <button 
-              onClick={() => setShowContactModal(false)} 
-              className="absolute -top-12 right-0 text-zinc-500 hover:text-white font-mono font-black text-xs border border-white/[0.05] rounded-lg px-2.5 py-1 bg-zinc-950/45 z-[60]"
-            >
-              [ ESC_CLOSE ]
-            </button>
-            <ContactForm />
+        <div className="fixed inset-0 w-screen h-screen z-[9999] flex items-center justify-center p-4 bg-black/90 backdrop-blur-md overflow-hidden">
+          <div className="relative w-full max-w-xl my-auto block">
+            <ContactForm onClose={() => setShowContactModal(false)} />
           </div>
         </div>
       )}
