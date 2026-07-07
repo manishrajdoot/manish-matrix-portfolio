@@ -1,6 +1,11 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from 'react';
+// 📡 MODULAR ARCHITECTURE IMPORTS
+import MatrixRain from '@/components/MatrixRain';
+import Sidebar from '@/components/Sidebar';
+import TechToolkit from '@/components/TechToolkit';
+import GithubRepos from '@/components/GithubRepos';
 
 export default function CompleteProductionPortfolio() {
   // 1. GLOBAL TEXT DATASETS MATRIX
@@ -101,73 +106,14 @@ export default function CompleteProductionPortfolio() {
   const projectsRef = useRef<HTMLDivElement>(null);
   const experienceRef = useRef<HTMLDivElement>(null);
   const blogRef = useRef<HTMLDivElement>(null);
-  const canvasRef = useRef<HTMLCanvasElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  // Fixed Structural Obscurity State Controller
   const isViewObscured = showContactModal || selectedBlog !== null;
 
   useEffect(() => {
     const handleMove = (e: MouseEvent) => setMousePos({ x: e.clientX, y: e.clientY });
     window.addEventListener('mousemove', handleMove);
     return () => window.removeEventListener('mousemove', handleMove);
-  }, []);
-
-  // 🟢 MATRIX DIGITAL RAIN FALLING ENGINE
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
-
-    let animationId: number;
-    let width = (canvas.width = window.innerWidth);
-    let height = (canvas.height = window.innerHeight);
-
-    const matrixChars = "ｦｧｨｩｪｫｬｭｮｯｰｱｲｳｴｵｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃﾄﾅﾆﾇﾈﾉﾊﾋﾌﾍﾎﾏﾐﾑﾒﾓﾔﾕﾖﾗﾘﾙﾚﾛﾜﾝ1023456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    const charArray = matrixChars.split("");
-    
-    const fontSize = 14;
-    const columns = Math.floor(width / fontSize) + 1;
-    const rainDrops = new Array(columns).fill(1);
-
-    const drawMatrixRain = () => {
-      ctx.fillStyle = "rgba(2, 2, 8, 0.06)";
-      ctx.fillRect(0, 0, width, height);
-
-      ctx.fillStyle = "#0f0";
-      ctx.font = fontSize + "px monospace";
-
-      for (let i = 0; i < rainDrops.length; i++) {
-        const text = charArray[Math.floor(Math.random() * charArray.length)];
-        const x = i * fontSize;
-        const y = rainDrops[i] * fontSize;
-
-        ctx.fillStyle = Math.random() > 0.975 ? "#fff" : "#00ff66";
-        ctx.fillText(text, x, y);
-
-        if (y > height && Math.random() > 0.975) {
-          rainDrops[i] = 0;
-        }
-        rainDrops[i]++;
-      }
-      animationId = requestAnimationFrame(drawMatrixRain);
-    };
-
-    drawMatrixRain();
-
-    const handleResize = () => {
-      if (canvas) {
-        width = canvas.width = window.innerWidth;
-        height = canvas.height = window.innerHeight;
-      }
-    };
-    window.addEventListener('resize', handleResize);
-    
-    return () => {
-      cancelAnimationFrame(animationId);
-      window.removeEventListener('resize', handleResize);
-    };
   }, []);
 
   const generateCaptcha = () => {
@@ -245,7 +191,8 @@ export default function CompleteProductionPortfolio() {
 
   return (
     <div className="relative min-h-screen bg-[#020208] text-[#b4b4b4] font-mono [cursor:none] select-none">
-      <canvas ref={canvasRef} className="fixed top-0 left-0 w-full h-full pointer-events-none z-0 opacity-40" />
+      {/* 🟢 CANVAS DECOUPLED MODULE BACKGROUND */}
+      <MatrixRain />
 
       {/* TARGET AMBIENT HOVERING CURSOR POINTER */}
       <div 
@@ -260,15 +207,12 @@ export default function CompleteProductionPortfolio() {
         }}
       />
 
-      {/* CONTROL SHELF NAVIGATION LINKS PANEL */}
-      <aside className="fixed left-0 top-0 h-full w-20 border-r border-white/[0.02] bg-[#03030c]/30 backdrop-blur-xl flex flex-col items-center justify-between py-10 z-50 hidden lg:flex">
-        <div className="w-10 h-10 rounded-xl bg-zinc-900 border border-[#00ff66]/30 flex items-center justify-center font-black text-[#00ff66] text-base shadow-[0_0_15px_rgba(0,255,102,0.2)]">MR</div>
-        <div className="flex flex-col space-y-8 text-lg font-bold text-zinc-600">
-          <span onMouseEnter={() => setCursorHovered(true)} onMouseLeave={() => setCursorHovered(false)} className="cursor-pointer hover:text-[#00ff66] transition-colors" onClick={() => handleTabNavigation('Home')}>⚡</span>
-          <span onMouseEnter={() => setCursorHovered(true)} onMouseLeave={() => setCursorHovered(false)} className="cursor-pointer hover:text-[#00ff66] transition-colors" onClick={() => handleTabNavigation('About')}>📂</span>
-          <span onMouseEnter={() => setCursorHovered(true)} onMouseLeave={() => setCursorHovered(false)} className="cursor-pointer hover:text-[#00ff66] transition-colors" onClick={() => handleTabNavigation('Blog')}>📝</span>
-        </div>
-      </aside>
+      {/* 🟢 SIDEBAR COMPONENT LINK INTERACTIVE BOUNDS */}
+      <Sidebar 
+        activeTab={activeTab}
+        onNavigate={handleTabNavigation}
+        setCursorHovered={setCursorHovered}
+      />
 
       {/* CORE DISPLAY WINDOW PORT DECLARATION CONTAINER */}
       <div className={`lg:pl-20 w-full max-w-7xl mx-auto px-6 md:px-12 py-6 relative z-10 space-y-32 transition-all duration-700 ${isViewObscured ? 'blur-3xl opacity-10 scale-[0.98] pointer-events-none' : ''}`}>
@@ -312,68 +256,40 @@ export default function CompleteProductionPortfolio() {
         <div ref={aboutRef} className="scroll-mt-24">
           <section className="p-8 rounded-2xl bg-[#04040c]/80 border border-white/[0.03] max-w-4xl space-y-4 shadow-xl">
             <span className="text-[9px] font-black tracking-[0.3em] text-[#00ff66] uppercase block animate-pulse">// SYSTEM_BIOGRAPHY_CORE</span>
-            <h3 className="text-2xl font-black text-white uppercase tracking-wide">Bypassing Latency Barriers</h3>
+            <h3 className="text-2xl font-black text-white uppercase tracking-wide">Bypassing Latency Matrix Barriers</h3>
             <p className="text-sm text-zinc-400 leading-relaxed font-sans font-medium">
               I am a data scientist and programmer deeply involved in performance engineering. My core competency lies in optimizing complex dataset structures, large matrix manipulations, and developing high-velocity data stream orchestration models. Whether it's structural backend query adjustments under PL/SQL trigger routines or developing Next.js modular frontend enclaves, I construct absolute invincible foundations for tech layouts.
             </p>
           </section>
         </div>
 
-        {/* SECTION 3: SKILLS */}
+        {/* SECTION 3: SKILLS DECOUPLED WITH HIGH-FIDELITY GRID */}
         <div ref={skillsRef} className="scroll-mt-24">
           <section className="space-y-6">
             <span className="text-[9px] font-black tracking-[0.3em] text-[#00ff66] uppercase block animate-pulse">// INTEL_CAPABILITIES</span>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {toolkit.map((item, idx) => (
-                <div key={idx} className="p-5 bg-[#04040e]/90 border border-white/[0.03] hover:border-[#00ff66]/20 rounded-xl transition-all">
-                  <div className="flex justify-between items-center mb-2">
-                    <span className="text-xs font-black text-white uppercase tracking-wide">{item.name}</span>
-                    <span className="text-[8px] font-mono font-bold text-[#00ff66] bg-emerald-950/40 px-2 py-0.5 rounded">{item.type}</span>
-                  </div>
-                  <p className="text-[11px] text-zinc-500 font-sans leading-relaxed pt-1 border-t border-white/[0.02]">{item.desc}</p>
-                </div>
-              ))}
-            </div>
+            
+            {/* ⚡ CALLING DECOUPLED TECH TOOLKIT HOOK MODULE */}
+            <TechToolkit toolkit={toolkit} />
+
           </section>
         </div>
 
-        {/* SECTION 4: PROJECTS */}
-        <div ref={projectsRef} className="scroll-mt-24">
-          <section className="space-y-6">
-            <div className="flex justify-between items-end">
-              <div>
-                <span className="text-[9px] font-black tracking-[0.3em] text-[#00ff66] uppercase block animate-pulse">// PRODUCTION_BLUEPRINTS</span>
-                <h3 className="text-xl font-extrabold text-white uppercase tracking-wider mt-0.5">Things I've Built</h3>
-              </div>
-              <a 
-                href="https://github.com/manishrajdoot?tab=repositories" target="_blank" rel="noreferrer"
-                className="text-[10px] font-bold text-[#00ff66] border border-[#00ff66]/20 bg-cyan-950/20 px-4 py-2 rounded-xl hover:bg-white hover:text-black transition-all"
-              >
-                VIEW MORE REPOS (GITHUB) →
-              </a>
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {projectAssetList.map((proj, idx) => (
-                <div key={idx} className="p-6 rounded-2xl bg-[#04040c]/80 border border-white/[0.03] hover:border-[#00ff66]/20 flex flex-col justify-between space-y-4 transition-all group">
-                  <div className="space-y-2">
-                    <div className="flex justify-between items-center text-zinc-600 text-sm select-none">
-                      <span className="text-[8px] font-mono bg-white/[0.02] border border-white/[0.05] rounded px-2 py-0.5 uppercase">Node Asset Mapping</span>
-                      <span>{proj.icon}</span>
-                    </div>
-                    <h4 className="text-base font-black text-white group-hover:text-[#00ff66] transition-colors uppercase tracking-wide">{proj.title}</h4>
-                    <p className="text-xs text-zinc-400 leading-relaxed font-sans font-medium">{proj.desc}</p>
-                  </div>
-                  <div className="flex flex-wrap gap-2 pt-2 border-t border-white/[0.02]">
-                    {proj.tags.map((t, i) => (
-                      <span key={i} className="text-[9px] font-mono font-bold text-[#00ff66] bg-cyan-950/20 px-2.5 py-0.5 rounded">{t}</span>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </section>
-        </div>
+        {/* SECTION 4: PROJECTS BLUEPRINTS */}
+        {/* SECTION 4: PROJECTS BLUEPRINTS */}
+<div ref={projectsRef} className="scroll-mt-24">
+  <section className="space-y-6">
+    <div className="flex justify-between items-end">
+      <div>
+        <span className="text-[9px] font-black tracking-[0.3em] text-[#00ff66] uppercase block animate-pulse">// PRODUCTION_BLUEPRINTS</span>
+        <h3 className="text-xl font-extrabold text-white uppercase tracking-wider mt-0.5">Live Repositories</h3>
+      </div>
+    </div>
+    
+    {/* ⚡ LIVE API GITHUB INJECTOR CALL */}
+    <GithubRepos />
+
+  </section>
+</div>
 
         {/* SECTION 5: EXPERIENCE */}
         <div ref={experienceRef} className="scroll-mt-24">
@@ -395,7 +311,7 @@ export default function CompleteProductionPortfolio() {
           </section>
         </div>
 
-        {/* SECTION 6: HIGH-END DIGITAL MAGAZINE BLOG */}
+        {/* SECTION 6: BLOG */}
         <div ref={blogRef} className="scroll-mt-24">
           <section className="space-y-6">
             <div>
@@ -408,7 +324,8 @@ export default function CompleteProductionPortfolio() {
                 <div 
                   key={post.id}
                   onClick={() => setSelectedBlog(post)}
-                  className="group relative bg-[#04040e]/90 border border-white/[0.03] hover:border-[#00ff66]/30 p-6 rounded-2xl cursor-pointer transition-all flex flex-col justify-between min-h-[200px]"
+                  onMouseEnter={() => setCursorHovered(true)} onMouseLeave={() => setCursorHovered(false)}
+                  className="group relative bg-[#04040e]/90 border border-white/[0.03] hover:border-[#00ff66]/30 p-6 rounded-2xl cursor-pointer transition-all duration-300 hover:-translate-y-1 shadow-lg flex flex-col justify-between min-h-[200px]"
                 >
                   <div className="space-y-3 relative z-10">
                     <div className="flex justify-between items-center text-[9px] font-bold tracking-widest">
