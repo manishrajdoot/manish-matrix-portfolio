@@ -20,9 +20,7 @@ export default function CompleteProductionPortfolio() {
     { name: 'United States', flag: '🇺🇸', code: '+1' },
     { name: 'United Kingdom', flag: '🇬🇧', code: '+44' },
     { name: 'Germany', flag: '🇩🇪', code: '+49' },
-    { name: 'Canada', flag: '🇨🇦', code: '+1' },
-    { name: 'Australia', flag: '🇦🇺', code: '+61' },
-    { name: 'Japan', flag: '🇯🇵', code: '+81' }
+    { name: 'Canada', flag: '🇨🇦', code: '+1' }
   ];
 
   const toolkit = [
@@ -46,6 +44,7 @@ export default function CompleteProductionPortfolio() {
     { id: 3, name: "Phonebook Diary PWA", description: "Progressive Web Application platform enabling users to encrypt, manipulate, search, and store contact node parameters securely through cloud synchronized pipelines.", html_url: "https://github.com/manishrajdoot?tab=repositories", stargazers_count: 4, forks_count: 0, language: "React" }
   ];
 
+  // 📝 FULL EXTENDED MARKDOWN BLOG ENCLAVE DATA ENGINE
   const blogDatabase = [
     {
       id: 1,
@@ -54,7 +53,30 @@ export default function CompleteProductionPortfolio() {
       readTime: "5 min read",
       category: "ARCHITECTURE",
       summary: "Deep dive into structural layouts validation, dynamic asset rendering loops, state management isolation, and high-velocity server rendering route paths.",
-      content: `<h4>1. THE RUNTIME ARCHITECTURAL PARADIGM</h4><p>Next.js 15 App Router introduces critical execution rules by moving layout processing to React Server Components (RSC).</p>`
+      content: `
+        <h4>1. THE RUNTIME ARCHITECTURAL PARADIGM</h4>
+        <p>Next.js 15 App Router introduces critical execution rules by moving layout processing to React Server Components (RSC). This removes heavy core packages dependency weights from the client bundle pipeline stream entirely.</p>
+        <h4>2. PARALLEL ROUTING MATRIX ENTRIES</h4>
+        <p>By implementing parallel intercept layouts, background nodes can safely execute heavy metadata passes async without triggering hydration state drops or unnecessary DOM repaint cycles.</p>
+        <pre>// Advanced Route Generation Vector\\nexport async function generateStaticParams() {\\n  return [{ nodeEnclave: 'stable-core-matrix' }];\\n}</pre>
+        <h4>3. HYDRATION METRICS AUDIT</h4>
+        <p>Enabling strict layout isolation mechanisms drops time-to-first-byte (TTFB) intervals by up to 45%, providing near-instantaneous navigation routines across complex client views grids.</p>
+      `
+    },
+    {
+      id: 2,
+      title: "The Relational Power of PL/SQL in Modern Enterprise Stacks",
+      date: "May 18, 2026",
+      readTime: "4 min read",
+      category: "DATABASE",
+      summary: "Analyzing performance proximity loops, kernel-level atomic triggers, and schema sequence data optimization scripts.",
+      content: `
+        <h4>1. DATA PROXIMITY AND SPEED RADIALS</h4>
+        <p>Executing data calculations directly inside the relational database engine core kernel eliminates massive data packet traveling lags. Procedural blocks compile natively right where memory structures sit.</p>
+        <h4>2. DATA INTEGRITY PACKAGES AND MUTATION GUARDS</h4>
+        <p>Relational triggers act as invincible cryptographic shield vectors, ensuring that complex data compliance verification blocks execute reliably before any row serialization commits to disks.</p>
+        <pre>CREATE OR REPLACE TRIGGER Matrix_Uplink_Guard\\nBEFORE INSERT ON Network_Log_Stream\\nFOR EACH ROW\\nBEGIN\\n  :NEW.synchronized_at := SYSTIMESTAMP;\\nEND;</pre>
+      `
     }
   ];
 
@@ -76,7 +98,6 @@ export default function CompleteProductionPortfolio() {
   const [mousePos, setMousePos] = useState({ x: -100, y: -100 });
   const [cursorHovered, setCursorHovered] = useState(false);
 
-  // 🛡️ Safe array initialization to protect SSR hydration
   const [githubRepos, setGithubRepos] = useState<Repo[]>([]);
   const [githubLoading, setGithubLoading] = useState(true);
 
@@ -138,7 +159,6 @@ export default function CompleteProductionPortfolio() {
     return () => { cancelAnimationFrame(animationId); window.removeEventListener('resize', handleResize); };
   }, []);
 
-  // 🛡️ STABLE SECURED RUNTIME ASYNC HANDSHAKE FOR BUILD PASSING
   useEffect(() => {
     let isMounted = true;
     async function fetchGitHubData() {
@@ -243,12 +263,13 @@ export default function CompleteProductionPortfolio() {
           <button onClick={() => handleTabNavigation('Contact')} className="ml-auto px-6 py-2.5 rounded-xl bg-zinc-950 border border-[#00ff66]/40 text-[#00ff66] font-extrabold text-[10px] tracking-widest uppercase shadow-[0_0_15px_rgba(0,255,102,0.15)]">Let's Talk</button>
         </nav>
 
+        {/* HERO */}
         <div ref={homeRef} className="scroll-mt-24">
           <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
             <div className="space-y-6 flex-1">
               <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-[#00ff66]/10 border border-[#00ff66]/20 text-[9px] font-black text-[#00ff66] tracking-widest uppercase animate-pulse">// SECURITY ENCLAVE COGNITIVE NODES: SECURE</div>
               <h2 className="text-5xl sm:text-6xl md:text-7xl font-black uppercase tracking-tight leading-none text-white">Manish Rajdoot.</h2>
-              <p className="text-xs text-zinc-400 max-w-md leading-relaxed font-sans font-medium">Data Scientist & Programmer specializing in algorithmic database sequences.</p>
+              <p className="text-xs text-zinc-400 max-w-md leading-relaxed font-sans font-medium">Data Scientist & Programmer specializing in algorithmic database sequences and high-fidelity modular system architectures.</p>
             </div>
             <div className="relative shrink-0 select-none">
               <div className="w-48 h-48 rounded-full border-2 border-[#00ff66]/40 bg-cover bg-center shadow-[0_0_40px_rgba(0,255,102,0.25)]" style={{ backgroundImage: "url('https://api.dicebear.com/7.x/bottts/svg?seed=Ninja&backgroundColor=03030c')" }} />
@@ -256,6 +277,7 @@ export default function CompleteProductionPortfolio() {
           </div>
         </div>
 
+        {/* ABOUT */}
         <div ref={aboutRef} className="scroll-mt-24">
           <section className="p-8 rounded-2xl bg-[#04040c]/80 border border-white/[0.03] max-w-4xl space-y-4">
             <span className="text-[9px] font-black tracking-[0.3em] text-[#00ff66] uppercase block">// SYSTEM_BIOGRAPHY_CORE</span>
@@ -264,6 +286,7 @@ export default function CompleteProductionPortfolio() {
           </section>
         </div>
 
+        {/* SKILLS */}
         <div ref={skillsRef} className="scroll-mt-24">
           <section className="space-y-6">
             <span className="text-[9px] font-black tracking-[0.3em] text-[#00ff66] uppercase block">// INTEL_CAPABILITIES</span>
@@ -281,6 +304,7 @@ export default function CompleteProductionPortfolio() {
           </section>
         </div>
 
+        {/* REPOSITORIES */}
         <div ref={projectsRef} className="scroll-mt-24">
           <section className="space-y-6">
             <span className="text-[9px] font-black tracking-[0.3em] text-[#00ff66] uppercase block">// PRODUCTION_BLUEPRINTS</span>
@@ -306,7 +330,114 @@ export default function CompleteProductionPortfolio() {
             )}
           </section>
         </div>
+
+        {/* TIMELINE */}
+        <div ref={experienceRef} className="scroll-mt-24">
+          <section className="space-y-6">
+            <span className="text-[9px] font-black tracking-[0.3em] text-[#00ff66] uppercase block">// TIMELINE_LOGS</span>
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
+              {experienceTimeline.map((exp, idx) => (
+                <div key={idx} className="bg-[#04040c]/40 border border-white/[0.02] p-6 rounded-xl space-y-2 hover:border-[#00ff66]/20 transition-all">
+                  <div className="flex justify-between items-center text-[9px] font-mono font-bold text-zinc-600 mb-1">
+                    <span className="text-[#00ff66]">⚡ INFRASTRUCTURE_NODE_0{idx+1}</span>
+                    <span>{exp.duration}</span>
+                  </div>
+                  <h4 className="text-xs font-black text-white uppercase tracking-wide">{exp.role}</h4>
+                  <p className="text-[11px] text-emerald-400 font-bold uppercase tracking-wide">{exp.company}</p>
+                  <p className="text-xs text-zinc-400 font-sans leading-relaxed pt-2 border-t border-white/[0.02] mt-2">{exp.lines}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+        </div>
+
+        {/* BLOG SYSTEM */}
+        <div ref={blogRef} className="scroll-mt-24">
+          <section className="space-y-6">
+            <div>
+              <span className="text-[9px] font-black tracking-[0.3em] text-[#00ff66] uppercase block animate-pulse">// PREMIUM_LOGS_MAGAZINE</span>
+              <h3 className="text-2xl font-black text-white uppercase tracking-wider mt-1">Terminal Publications</h3>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {blogDatabase.map((post) => (
+                <div 
+                  key={post.id}
+                  onClick={() => setSelectedBlog(post)}
+                  className="group relative bg-[#04040e]/90 border border-white/[0.03] hover:border-[#00ff66]/30 p-6 rounded-2xl cursor-pointer transition-all duration-300 hover:-translate-y-1 shadow-lg flex flex-col justify-between min-h-[200px]"
+                >
+                  <div className="space-y-3 relative z-10">
+                    <div className="flex justify-between items-center text-[9px] font-bold tracking-widest">
+                      <span className="text-[#00ff66] bg-emerald-950/40 border border-emerald-900/30 px-2.5 py-0.5 rounded-md uppercase">{post.category}</span>
+                      <span className="text-zinc-500">{post.readTime}</span>
+                    </div>
+                    <h4 className="text-base font-black text-white group-hover:text-[#00ff66] transition-colors uppercase tracking-wide leading-snug">{post.title}</h4>
+                    <p className="text-xs text-zinc-400 leading-relaxed font-sans font-medium line-clamp-2">{post.summary}</p>
+                  </div>
+                  <div className="pt-4 border-t border-white/[0.03] flex justify-between items-center text-[9px] font-bold text-zinc-500 relative z-10 group-hover:text-zinc-300 transition-colors">
+                    <span>{post.date}</span>
+                    <span className="text-[#00ff66] group-hover:translate-x-1 transition-transform inline-flex items-center gap-1">READ NODE <span className="text-xs">→</span></span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+        </div>
       </div>
+
+      {/* POPUP PREVIEW CONTAINER */}
+      {selectedBlog && (
+        <div className="fixed inset-0 w-screen h-screen z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-md overflow-y-auto">
+          <div className="w-full max-w-3xl p-6 md:p-10 relative my-auto bg-[#03030d]/90 border border-[#00ff66]/20 rounded-2xl backdrop-blur-2xl shadow-2xl">
+            <div className="flex justify-between items-center border-b border-white/[0.05] pb-4 mb-6">
+              <div className="flex items-center space-x-2">
+                <span className="w-2.5 h-2.5 rounded-full bg-red-500/80 cursor-pointer" onClick={() => setSelectedBlog(null)} />
+                <span className="w-2.5 h-2.5 rounded-full bg-yellow-500/50" />
+                <span className="w-2.5 h-2.5 rounded-full bg-green-500/50" />
+                <span className="text-[9px] text-zinc-500 pl-2 tracking-widest uppercase font-bold">// STORAGE_NODE_PREVIEW: {selectedBlog.category}</span>
+              </div>
+              <button onClick={() => setSelectedBlog(null)} className="text-zinc-500 hover:text-white font-mono font-bold text-[10px] border border-white/[0.05] rounded-md px-2 py-0.5 bg-zinc-950/40">[ CLOSE_STREAM ]</button>
+            </div>
+            <article className="space-y-4 text-zinc-300 font-mono">
+              <h2 className="text-xl md:text-2xl font-black text-white uppercase tracking-wide">{selectedBlog.title}</h2>
+              <div 
+                className="prose prose-invert text-xs md:text-sm font-sans leading-relaxed text-zinc-400 pt-4 border-t border-white/[0.03] space-y-4
+                [&>h4]:font-mono [&>h4]:text-[#00ff66] [&>h4]:text-xs [&>h4]:font-black [&>h4]:uppercase [&>h4]:mt-6
+                [&>pre]:bg-black/60 [&>pre]:p-4 [&>pre]:rounded-xl [&>pre]:font-mono [&>pre]:text-[11px] [&>pre]:text-emerald-400 [&>pre]:border [&>pre]:border-white/[0.03] [&>pre]:overflow-x-auto"
+                dangerouslySetInnerHTML={{ __html: selectedBlog.content }} 
+              />
+            </article>
+          </div>
+        </div>
+      )}
+
+      {/* CONTACT TERM TERMINAL */}
+      {showContactModal && (
+        <div className="fixed inset-0 w-screen h-screen z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm overflow-y-auto">
+          <div className="w-full max-w-4xl p-6 md:p-10 relative my-auto bg-[#03030c]/95 border border-[#00ff66]/20 rounded-2xl shadow-2xl">
+            <button onClick={() => setShowContactModal(false)} className="absolute top-5 right-6 text-zinc-500 hover:text-white font-mono font-black text-xs border border-white/[0.05] rounded-lg px-2.5 py-1 bg-zinc-950/40">[ ESC_CLOSE ]</button>
+            <h3 className="text-2xl font-black uppercase tracking-wider text-white mb-6">Establish Direct Transmission</h3>
+            <form onSubmit={handleFormSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <input required name="firstName" type="text" value={formDataState.firstName} onChange={handleInputChange} className="bg-[#03030c]/90 border border-white/[0.05] focus:border-[#00ff66] text-xs p-3.5 rounded-xl outline-none text-white" placeholder="First Name" />
+              <input required name="lastName" type="text" value={formDataState.lastName} onChange={handleInputChange} className="bg-[#03030c]/90 border border-white/[0.05] focus:border-[#00ff66] text-xs p-3.5 rounded-xl outline-none text-white" placeholder="Last Name" />
+              <input required name="email" type="email" value={formDataState.email} onChange={handleInputChange} className="bg-[#03030c]/90 border border-white/[0.05] focus:border-[#00ff66] text-xs p-3.5 rounded-xl outline-none text-white col-span-2" placeholder="Email Signature" />
+              <textarea name="message" value={formDataState.message} onChange={handleInputChange} rows={3} className="bg-[#03030c]/90 border border-white/[0.05] focus:border-[#00ff66] text-xs p-3 rounded-xl text-white outline-none resize-none col-span-2" placeholder="Transmission Node Message..." />
+              
+              <div className="col-span-2 bg-[#050512] border border-white/[0.04] p-3.5 rounded-xl flex items-center justify-between gap-4">
+                <span className="text-[9px] text-[#00ff66]">🛡️ KEY: {captchaChallenge.token}</span>
+                <input required type="text" value={userCaptchaInput} onChange={(e) => setUserCaptchaInput(e.target.value)} placeholder="Decrypt" className="bg-[#03030c] border border-white/[0.08] text-xs p-2 rounded-lg text-white w-24 text-center" />
+              </div>
+
+              <button type="submit" className="w-full py-3.5 rounded-xl bg-zinc-950 border border-[#00ff66]/40 text-[#00ff66] font-black text-xs tracking-widest uppercase col-span-2 shadow-[0_0_20px_rgba(0,255,102,0.1)]">EXECUTE NODE UPLINK 📡</button>
+            </form>
+          </div>
+        </div>
+      )}
+
+      <footer className="w-full border-t border-white/[0.02] bg-[#020206] py-6 flex justify-between items-center px-8 text-[9px] text-zinc-600 font-bold tracking-widest relative z-40 mt-16 uppercase">
+        <span>Framework Compiled Stable // 2026</span>
+        <span>© Manish Rajdoot. All networks secured.</span>
+      </footer>
     </div>
   );
 }
