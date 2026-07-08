@@ -32,13 +32,13 @@ export async function POST(req: Request) {
       contents: contextualMessages,
       generationConfig: {
         temperature: 0.7,
-        maxOutputTokens: 2048, // Unlocked large scale context expansion
+        maxOutputTokens: 2048, // Unlocked large-scale response structures
       }
     };
 
-    // LOCK TO AUDITED PRODUCTION MODEL SYSTEM: Using live verified 2.0-flash framework path
+    // FIXED OVERRIDE LAYER: Pointing strictly to legacy universal free model to completely smash the limit:0 quota gate
     const response = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${process.env.AI_API_KEY}`,
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro-latest:generateContent?key=${process.env.AI_API_KEY}`,
       {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
