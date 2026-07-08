@@ -41,13 +41,37 @@ export default function AIChatbubble() {
 
   return (
     <div className="fixed bottom-6 right-6 z-[9999] font-mono select-text text-xs">
-      {/* Chat Floating Button */}
+      {/* 🤖 ADVANCED ANIMATED CYBER BUTTON */}
       {!isOpen && (
         <button 
           onClick={() => setIsOpen(true)}
-          className="w-14 h-14 rounded-full bg-[#03030c] border border-[#00ff66]/60 hover:border-[#00ff66] text-[#00ff66] text-xl flex items-center justify-center shadow-[0_0_20px_rgba(0,255,102,0.3)] hover:scale-105 transition-all cursor-pointer"
+          className="relative group flex items-center justify-center w-14 h-14 focus:outline-none cursor-pointer"
         >
-          🤖
+          {/* Cyber Neon Pulse Field */}
+          <div className="absolute inset-0 bg-[#00ff66]/10 rounded-full blur-md group-hover:bg-[#00ff66]/30 transition-all duration-500 animate-pulse" />
+          
+          {/* Outer Ring: Fast Clockwise Green Tech Loop */}
+          <div className="absolute inset-0 border border-dashed border-[#00ff66]/50 rounded-full animate-[spin_8s_linear_infinite] group-hover:border-[#00ff66] transition-colors duration-500" />
+          
+          {/* Inner Ring: Slow Counter-Clockwise Dotted Mesh */}
+          <div className="absolute inset-1 border border-dotted border-[#00ff66]/30 rounded-full animate-[spin_14s_linear_reverse_infinite]" />
+
+          {/* Center Hub Core */}
+          <div className="relative w-10 h-10 bg-[#03030c] border border-[#00ff66]/60 rounded-full flex items-center justify-center shadow-[0_0_15px_rgba(0,255,102,0.2)] group-hover:shadow-[0_0_25px_rgba(0,255,102,0.5)] group-hover:border-[#00ff66] transition-all duration-500">
+            {/* Blinking Central Data Node */}
+            <div className="absolute w-1.5 h-1.5 bg-[#00ff66] rounded-full animate-ping opacity-75" />
+            
+            {/* Minimalist Tech Vector Bot Head */}
+            <svg 
+              className="w-5 h-5 text-[#00ff66] group-hover:scale-110 transition-transform duration-500" 
+              fill="none" 
+              viewBox="0 0 24 24" 
+              stroke="currentColor" 
+              strokeWidth={2}
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
+            </svg>
+          </div>
         </button>
       )}
 
