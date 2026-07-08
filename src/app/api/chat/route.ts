@@ -36,9 +36,9 @@ export async function POST(req: Request) {
       }
     };
 
-    // FIXED OVERRIDE LAYER: Pointing strictly to legacy universal free model to completely smash the limit:0 quota gate
+    // STANDARD RE-ROUTE MATRIX: Forcing the actual 2026 free tier engine alias to completely bypass the Pro 0-limit threshold walls
     const response = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro-latest:generateContent?key=${process.env.AI_API_KEY}`,
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${process.env.AI_API_KEY}`,
       {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
