@@ -12,14 +12,14 @@ export async function POST(req: Request) {
       });
     }
 
-    // Fixed strict array part layout for system instructions
+    // Modern universal content map architecture
     const geminiPayload = {
       contents: messages.map((m: any) => ({
         role: m.role === 'assistant' ? 'model' : 'user',
         parts: [{ text: m.content }]
       })),
       systemInstruction: {
-        parts: [{ text: aiContext.systemPrompt }] // Strict block matrix
+        parts: [{ text: aiContext.systemPrompt }]
       },
       generationConfig: {
         temperature: 0.7,
@@ -27,8 +27,9 @@ export async function POST(req: Request) {
       }
     };
 
+    // Switched to stable universal endpoint supporting new auth structures
     const response = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${process.env.AI_API_KEY}`,
+      `https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=${process.env.AI_API_KEY}`,
       {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -38,16 +39,23 @@ export async function POST(req: Request) {
 
     const data = await response.json();
     
-    // Safety handling if Gemini structure gives candidate mismatch
     if (data.candidates && data.candidates[0]?.content?.parts?.[0]?.text) {
       const aiResponse = data.candidates[0].content.parts[0].text;
       return NextResponse.json({ role: "assistant", content: aiResponse });
-    } else {
+    } 
+    
+    // Detailed inner log breakdown for debugging
+    if (data.error) {
       return NextResponse.json({ 
         role: "assistant", 
-        content: `// API ERROR: System response block was empty. Check key activation.` 
+        content: `// GOOGLE API ERROR: ${data.error.message || 'Authentication declined.'}` 
       });
     }
+
+    return NextResponse.json({ 
+      role: "assistant", 
+      content: `// SYSTEM ERROR: Buffer empty. Re-verify env key copy.` 
+    });
 
   } catch (error) {
     return NextResponse.json({ error: "Pipeline translation dropped matrix frame." }, { status: 500 });
