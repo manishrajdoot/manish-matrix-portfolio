@@ -12,7 +12,6 @@ export async function POST(req: Request) {
       });
     }
 
-    // Dynamic contextual message mapping for standard v1beta interface
     const contextualMessages = [
       {
         role: 'user',
@@ -36,9 +35,9 @@ export async function POST(req: Request) {
       }
     };
 
-    // Switched backend engine safely back to v1beta for global flash architecture support
+    // Switched model path to gemini-1.5-flash-latest to resolve the versioning mismatch completely
     const response = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${process.env.AI_API_KEY}`,
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${process.env.AI_API_KEY}`,
       {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
