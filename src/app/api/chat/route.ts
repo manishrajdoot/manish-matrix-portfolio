@@ -12,22 +12,31 @@ export async function POST(req: Request) {
       });
     }
 
-    // Modern universal content map architecture
-    const geminiPayload = {
-      contents: messages.map((m: any) => ({
+    // Existing context ko messages array ke start me strictly blend kar rahe hain
+    // Isse dynamic structural compatibility error 100% resolve ho jayega
+    const contextualMessages = [
+      {
+        role: 'user',
+        parts: [{ text: `System Instruction Baseline: ${aiContext.systemPrompt}\n\nAcknowledge this system baseline and reply to the user conversation accordingly.` }]
+      },
+      {
+        role: 'model',
+        parts: [{ text: `UNDERSTOOD. Matrix-AI protocols activated. Ready to assist according to Manish Rajdoot's profile data.` }]
+      },
+      ...messages.map((m: any) => ({
         role: m.role === 'assistant' ? 'model' : 'user',
         parts: [{ text: m.content }]
-      })),
-      systemInstruction: {
-        parts: [{ text: aiContext.systemPrompt }]
-      },
+      }))
+    ];
+
+    const geminiPayload = {
+      contents: contextualMessages,
       generationConfig: {
         temperature: 0.7,
         maxOutputTokens: 250,
       }
     };
 
-    // Switched to stable universal endpoint supporting new auth structures
     const response = await fetch(
       `https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=${process.env.AI_API_KEY}`,
       {
@@ -44,7 +53,6 @@ export async function POST(req: Request) {
       return NextResponse.json({ role: "assistant", content: aiResponse });
     } 
     
-    // Detailed inner log breakdown for debugging
     if (data.error) {
       return NextResponse.json({ 
         role: "assistant", 
