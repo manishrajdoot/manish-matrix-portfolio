@@ -3,7 +3,25 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Manish Rajdoot | Data Scientist & Programmer",
-  description: "Portfolio of Manish Rajdoot, specializing in Data Science and high-fidelity modular system architectures.",
+  description: "Official portfolio of Manish Rajdoot. Data Scientist and Full Stack Programmer specializing in algorithmic database sequences, machine learning pipelines, and high-fidelity system architectures.",
+  keywords: ["Manish Rajdoot", "Manish Rajput", "Manish Rajdoot Portfolio", "Data Scientist Jaipur", "Programmer Manish", "PL/SQL Engineer"],
+  authors: [{ name: "Manish Rajdoot" }],
+  creator: "Manish Rajdoot",
+  metadataBase: new URL("https://manish-matrix-portfolio.vercel.app"), // Apni exact active vercel URL yahan daal dena bhai
+  alternates: {
+    canonical: "/",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   icons: {
     icon: "/favicon.ico",
   },
