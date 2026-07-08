@@ -4,6 +4,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import ContactForm from '@/components/ContactForm';
 import BlogModule from '@/components/BlogModule';
 import AIChatbubble from '@/components/AIChatbubble';
+import SqlTerminal from '@/components/SqlTerminal'; // Successfully Linked Terminal
 
 interface Repo {
   id: number;
@@ -37,7 +38,7 @@ export default function Home() {
   const experienceTimeline = [
     { role: "Full Stack Developer Intern", company: "Zeetron Network, Jaipur", duration: "Jan 2024 — Apr 2024", lines: "Directed the development of robust data processing backend engines and integrated stateful frontend interface views to scale web app workflows under custom corporate MERN deployments." },
     { role: "Python Developer Intern", company: "Zeetron Network, Jaipur", duration: "Sep 2023 — Dec 2023", lines: "Formulated highly optimized data parser scripts and designed restful synchronization middleware hooks using Python, Flask, and customized asynchronous thread scheduling protocols." },
-    { role: "PL/SQL Database Engineer Intern", company: "Wipro TechAdemy", duration: "May 2023 — Aug 2023", lines: "Architected structured relational trigger sequences, engineered database audit schemas, and drastically decreased transaction load execution bottlenecks via deep query optimization passes." }
+    { role: "PL/SQL Database Engineer Intern", company: "Wipro TechAdemy", duration: "May 2024 — Aug 2025", lines: "Architected structured relational trigger sequences, engineered database audit schemas, and drastically decreased transaction load execution bottlenecks via deep query optimization passes." }
   ];
 
   const [activeTab, setActiveTab] = useState('Home');
@@ -278,6 +279,15 @@ export default function Home() {
               ))}
             </div>
           </section>
+        </div>
+
+        {/* NEW ADDITION NODE: SQL TERMINAL METRIC PROFILER SECTION */}
+        <div className="scroll-mt-24 bg-[#04040c]/50 p-6 border border-white/[0.02] rounded-2xl shadow-xl">
+          <div className="mb-6">
+            <span className="text-[9px] font-black tracking-[0.3em] text-[#00ff66] uppercase block">// LIVE_DATABASE_METRIC_PROFILER</span>
+            <p className="text-[11px] text-zinc-500 font-sans mt-1">Execute active queries to profile server latency maps and index scans.</p>
+          </div>
+          <SqlTerminal />
         </div>
 
         {/* BLOG MODULE */}
