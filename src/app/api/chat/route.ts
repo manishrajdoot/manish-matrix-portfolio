@@ -21,7 +21,7 @@ export async function POST(req: Request) {
       }))
     ];
 
-    // Hitting OpenRouter with hard-locked authorization token string headers
+    // Hitting OpenRouter with explicitly verified header tokens
     const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
       method: "POST",
       headers: {
@@ -31,7 +31,8 @@ export async function POST(req: Request) {
         "X-Title": "Manish Rajdoot Matrix Portfolio"
       },
       body: JSON.stringify({
-        model: "openchat/openchat-7b:free",
+        // 🚀 MODEL UPDATE: Using highly available Gemma 2 Free tier to completely fix the endpoint drop error
+        model: "google/gemma-2-9b-it:free",
         messages: openRouterMessages,
         temperature: 0.7,
         max_tokens: 2048 
