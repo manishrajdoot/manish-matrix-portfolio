@@ -25,20 +25,21 @@ export async function POST(req: Request) {
       }))
     ];
 
-    // Hitting OpenRouter universal free endpoint layer for infinite scaling responses
+    // Hitting OpenRouter with a high-availability model to bypass structural traffic queues
     const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
       method: "POST",
       headers: {
         "Authorization": `Bearer ${process.env.AI_API_KEY}`,
         "Content-Type": "application/json",
-        "HTTP-Referer": "https://manishrajdoot.com", // Site reference metrics
+        "HTTP-Referer": "https://manishrajdoot.com", 
         "X-Title": "Manish Rajdoot Matrix Portfolio"
       },
       body: JSON.stringify({
-        model: "meta-llama/llama-3-8b-instruct:free",
+        // 🚀 ROUTING UPGRADE: Switched to high-availability free tier endpoint to completely smash spike demands
+        model: "openchat/openchat-7b:free",
         messages: openRouterMessages,
         temperature: 0.7,
-        max_tokens: 2048 // Fully unlocked long response frames
+        max_tokens: 2048 
       })
     });
 
