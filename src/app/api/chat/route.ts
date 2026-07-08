@@ -9,47 +9,43 @@ export async function POST(req: Request) {
     if (!process.env.AI_API_KEY) {
       return NextResponse.json({ 
         role: "assistant", 
-        content: `// OFFLINE MODE NODE: Please configure AI_API_KEY in Vercel env.` 
+        content: `// OFFLINE MODE NODE: Please configure OpenRouter AI_API_KEY in env layers.` 
       });
     }
 
-    const contextualMessages = [
+    // Transforming messages to absolute OpenRouter protocol standard mesh
+    const openRouterMessages = [
       {
-        role: 'user',
-        parts: [{ text: `System Instruction Baseline: ${aiContext.systemPrompt}\n\nAcknowledge this system baseline and reply to the user conversation accordingly.` }]
-      },
-      {
-        role: 'model',
-        parts: [{ text: `UNDERSTOOD. Matrix-AI protocols activated. Ready to assist according to Manish Rajdoot's profile data.` }]
+        role: 'system',
+        content: aiContext.systemPrompt
       },
       ...messages.map((m: any) => ({
-        role: m.role === 'assistant' ? 'model' : 'user',
-        parts: [{ text: m.content }]
+        role: m.role === 'assistant' ? 'assistant' : 'user',
+        content: m.content
       }))
     ];
 
-    const geminiPayload = {
-      contents: contextualMessages,
-      generationConfig: {
+    // Hitting OpenRouter universal free endpoint layer for infinite scaling responses
+    const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+      method: "POST",
+      headers: {
+        "Authorization": `Bearer ${process.env.AI_API_KEY}`,
+        "Content-Type": "application/json",
+        "HTTP-Referer": "https://manishrajdoot.com", // Site reference metrics
+        "X-Title": "Manish Rajdoot Matrix Portfolio"
+      },
+      body: JSON.stringify({
+        model: "meta-llama/llama-3-8b-instruct:free",
+        messages: openRouterMessages,
         temperature: 0.7,
-        maxOutputTokens: 2048, // Unlocked large-scale response structures
-      }
-    };
-
-    // STANDARD RE-ROUTE MATRIX: Forcing the actual 2026 free tier engine alias to completely bypass the Pro 0-limit threshold walls
-    const response = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${process.env.AI_API_KEY}`,
-      {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(geminiPayload),
-      }
-    );
+        max_tokens: 2048 // Fully unlocked long response frames
+      })
+    });
 
     const data = await response.json();
     
-    if (data.candidates && data.candidates[0]?.content?.parts?.[0]?.text) {
-      const aiResponse = data.candidates[0].content.parts[0].text;
+    if (data.choices && data.choices[0]?.message?.content) {
+      const aiResponse = data.choices[0].message.content;
 
       // 🛡️ BACKGROUND INTERCEPT MESH: Logging current user prompt metadata securely
       const userText = messages[messages.length - 1]?.content || "Unknown Node";
@@ -65,7 +61,7 @@ export async function POST(req: Request) {
     } 
     
     if (data.error) {
-      // Log failure frame tracking
+      // Log failure frame tracking inside storage block
       const userText = messages[messages.length - 1]?.content || "Unknown Node";
       globalChatRegistry.unshift({
         id: `ERR-${Math.floor(1000 + Math.random() * 9000)}`,
@@ -77,7 +73,7 @@ export async function POST(req: Request) {
 
       return NextResponse.json({ 
         role: "assistant", 
-        content: `// GOOGLE API ERROR: ${data.error.message || 'Authentication declined.'}` 
+        content: `// OPENROUTER ROUTE ERROR: ${data.error.message || 'Transmission declined.'}` 
       });
     }
 
