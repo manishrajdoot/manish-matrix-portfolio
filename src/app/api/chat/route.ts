@@ -12,7 +12,6 @@ export async function POST(req: Request) {
       });
     }
 
-    // Modern structure message pairing using audited active models standard
     const contextualMessages = [
       {
         role: 'user',
@@ -32,13 +31,13 @@ export async function POST(req: Request) {
       contents: contextualMessages,
       generationConfig: {
         temperature: 0.7,
-        maxOutputTokens: 300,
+        maxOutputTokens: 250,
       }
     };
 
-    // FIXED LOCK: Explicitly hitting the live verified audited model path
+    // FIXED SWITCH: Hitting the universal gemini-flash-latest to bypass quota barrier completely
     const response = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${process.env.AI_API_KEY}`,
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent?key=${process.env.AI_API_KEY}`,
       {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
