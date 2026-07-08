@@ -152,7 +152,6 @@ export default function Home() {
     <div className="relative min-h-screen bg-[#020208] text-[#b4b4b4] font-mono lg:[cursor:none] select-none overflow-x-hidden">
       <canvas ref={canvasRef} className="fixed top-0 left-0 w-full h-full pointer-events-none z-0 opacity-30" />
       
-      {/* Absolute topmost glow dot layer - works full width and overlays everywhere */}
       <div 
         className="fixed pointer-events-none rounded-full z-[99999] transition-transform duration-75 mix-blend-difference hidden lg:block"
         style={{
@@ -286,7 +285,7 @@ export default function Home() {
         </div>
       </div>
 
-      {/* OVERLAY SYSTEM WITHOUT CURSOR CONFLICTS */}
+      {/* OVERLAY WITH AUTO MOUSE VALUE OVERRIDE FORCE */}
       {showContactModal && (
         <div className="fixed inset-0 w-screen h-screen z-[9999] flex items-center justify-center p-4 bg-black/90 backdrop-blur-md overflow-hidden">
           <div className="relative w-full max-w-xl my-auto block">

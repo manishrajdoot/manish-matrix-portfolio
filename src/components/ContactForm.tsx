@@ -89,7 +89,7 @@ export default function ContactForm({ onClose }: ContactFormProps) {
   };
 
   return (
-    <div className="w-full bg-[#03030c] border border-[#00ff66] rounded-2xl p-5 md:p-6 shadow-[0_0_35px_rgba(0,255,102,0.25)] relative mx-auto select-text" style={{ maxWidth: '600px' }}>
+    <div className="w-full bg-[#03030c] border border-[#00ff66] rounded-2xl p-5 md:p-6 shadow-[0_0_35px_rgba(0,255,102,0.25)] relative mx-auto select-text animate-fadeIn" style={{ maxWidth: '600px' }}>
       <div className="flex justify-between items-center border-b border-white/[0.05] pb-3 mb-4">
         <div className="space-y-0.5">
           <span className="text-[9px] font-black tracking-[0.3em] text-[#00ff66] bg-emerald-950/50 px-2.5 py-0.5 rounded-full uppercase inline-block">// TRANSMISSION TERMINAL</span>
