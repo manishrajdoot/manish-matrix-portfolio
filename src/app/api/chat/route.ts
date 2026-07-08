@@ -32,7 +32,7 @@ export async function POST(req: Request) {
       contents: contextualMessages,
       generationConfig: {
         temperature: 0.7,
-        maxOutputTokens: 250,
+        maxOutputTokens: 2048, // 🚀 FIXED SWITCH: Strictly updated from 250 to 2048 for deep, unlimited answers
       }
     };
 
