@@ -200,139 +200,139 @@ export default function Home() {
               <p className="text-xs text-zinc-400 max-w-md leading-relaxed font-sans font-medium">Data Scientist & Programmer specializing in algorithmic database sequences and high-fidelity modular system architectures.</p>
             </div>
             
-            {/* 🟢 ADVANCED MECHANICAL ROBOT PART DECONSTRUCTION PORTAL (REFERENCING image_0.png) */}
+            {/* 🟢 ADVANCED MATRIX PIXEL DECONSTRUCTION ENGINE ENCLAVE */}
             <div className="relative shrink-0 select-none">
-              <div className="relative w-48 h-48 rounded-full border-2 border-[#00ff66]/60 bg-[#03030c] shadow-[0_0_40px_rgba(0,255,102,0.25)] overflow-hidden flex items-center justify-center group">
+              <div className="relative w-48 h-48 rounded-full border-2 border-[#00ff66]/60 bg-[#03030c] shadow-[0_0_40px_rgba(0,255,102,0.25)] overflow-hidden flex items-center justify-center">
                 
-                {/* Definitive Matrix Green Grid Scanning Overlay inside circle boundary */}
-                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#00ff66]/5 to-transparent animate-[pulse_3s_infinite] pointer-events-none z-10" />
+                {/* Internal Scanning Layer */}
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#00ff66]/10 to-transparent animate-[pulse_2s_infinite] pointer-events-none z-10" />
 
-                {/* FULL CUSTOM EMBEDDED MECHANICS SVG */}
-                <svg 
-                  className="w-40 h-40 select-none" 
-                  viewBox="0 0 200 200" 
-                  fill="none" 
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  {/* DEFINITIONS FOR TIME-SYNCED MATRIX BREAKDOWN KEYFRAMES */}
+                {/* MATRIX GLITCH SVG SUB-ELEMENT ENGINE */}
+                <svg className="w-40 h-40" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
                   <defs>
+                    {/* HARD MATRIX GRID PIXELATION FILTER */}
+                    <filter id="matrix-glitch-pixelate" x="-20%" y="-20%" width="140%" height="140%" filterUnits="userSpaceOnUse">
+                      <feGaussianBlur stdDeviation="3" result="blur" />
+                      <feComponentTransfer in="blur" result="brick">
+                        <feFuncR type="discrete" tableValues="0 0.2 0.4 0.6 0.8 1" />
+                        <feFuncG type="discrete" tableValues="0 0.5 0.8 1" />
+                        <feFuncB type="discrete" tableValues="0 0.2 0.4 0.6 0.8 1" />
+                      </feComponentTransfer>
+                      <feComposite operator="in" in2="SourceGraphic" />
+                    </filter>
+
                     <style>{`
-                      /* 
-                        ANIMATION TIMING MAP:
-                        0% - 25%: Full assembled face (Static Stable State)
-                        25% - 40%: Exploding/Disassembling apart into pieces
-                        40% - 60%: Disassembled state (Frozen separated pieces inside boundary)
-                        60% - 80%: Reassembling/Snapping back together smoothly
-                        80% - 100%: Full assembled face again (Stable loop) 
+                      /* TIME SYNC SPECIFICATION BLOCK:
+                        0% - 20%: Full assembled vector state (Static Stable View)
+                        20% - 40%: Crash into raw green matrix pixels & shatter apart
+                        40% - 60%: Disassembled state (Pixels frozen separated inside circle boundary)
+                        60% - 80%: Re-assembling / Compiling binary shards back to solid form
+                        80% - 100%: Full assembled vector state again
                       */
 
-                      /* 1. Face Brain Shell Outline - Drops heavily down/right and scales slightly */
-                      .bot-face-shell {
-                        animation: disassembleShell 6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+                      .matrix-shell {
+                        animation: decompileShell 6s cubic-bezier(0.15, 0.85, 0.35, 1) infinite;
                         transform-origin: 100px 115px;
                       }
-                      @keyframes disassembleShell {
-                        0%, 25%, 80%, 100% { transform: translate(0, 0) scale(1); opacity: 1; }
-                        40%, 60% { transform: translate(8px, 18px) scale(0.96); opacity: 0.9; }
+                      @keyframes decompileShell {
+                        0%, 20%, 80%, 100% { transform: translate(0, 0) scale(1); filter: none; opacity: 1; }
+                        30% { filter: url(#matrix-glitch-pixelate) drop-shadow(0 0 12px #00ff66); }
+                        40%, 60% { transform: translate(12px, 16px) scale(0.92); filter: url(#matrix-glitch-pixelate); opacity: 0.25; }
+                        70% { filter: url(#matrix-glitch-pixelate) drop-shadow(0 0 8px #00ff66); opacity: 0.7; }
                       }
 
-                      /* 2. Top Antennas Nodes - Blast upwards and tilt sharply outwards */
-                      .bot-antennas {
-                        animation: disassembleAntennas 6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+                      .matrix-antennas {
+                        animation: decompileAntennas 6s cubic-bezier(0.15, 0.85, 0.35, 1) infinite;
                         transform-origin: 100px 65px;
                       }
-                      @keyframes disassembleAntennas {
-                        0%, 25%, 80%, 100% { transform: translate(0, 0) rotate(0deg); }
-                        40%, 60% { transform: translate(-10px, -32px) rotate(-20deg); }
+                      @keyframes decompileAntennas {
+                        0%, 20%, 80%, 100% { transform: translate(0, 0) scale(1) rotate(0deg); filter: none; }
+                        30% { filter: url(#matrix-glitch-pixelate); }
+                        40%, 60% { transform: translate(-18px, -36px) scale(0.8) rotate(-25deg); filter: url(#matrix-glitch-pixelate); fill: #00ff66; }
                       }
 
-                      /* 3. Left Audio Sensor/Ear - Blasts heavily to the deep left boundary limit */
-                      .bot-left-ear {
-                        animation: disassembleLeftEar 6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+                      .matrix-left-ear {
+                        animation: decompileLeftEar 6s cubic-bezier(0.15, 0.85, 0.35, 1) infinite;
                       }
-                      @keyframes disassembleLeftEar {
-                        0%, 25%, 80%, 100% { transform: translate(0, 0); }
-                        40%, 60% { transform: translate(-28px, 10px); }
-                      }
-
-                      /* 4. Right Audio Sensor/Ear - Blasts heavily to the deep right boundary limit */
-                      .bot-right-ear {
-                        animation: disassembleRightEar 6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-                      }
-                      @keyframes disassembleRightEar {
-                        0%, 25%, 80%, 100% { transform: translate(0, 0); }
-                        40%, 60% { transform: translate(28px, 10px); }
+                      @keyframes decompileLeftEar {
+                        0%, 20%, 80%, 100% { transform: translate(0, 0); filter: none; }
+                        40%, 60% { transform: translate(-32px, 12px); filter: url(#matrix-glitch-pixelate); opacity: 0.4; }
                       }
 
-                      /* 5. Left Heart Eye - Floating towards upper-left inside face radius */
-                      .bot-left-heart {
-                        animation: disassembleLeftHeart 6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+                      .matrix-right-ear {
+                        animation: decompileRightEar 6s cubic-bezier(0.15, 0.85, 0.35, 1) infinite;
+                      }
+                      @keyframes decompileRightEar {
+                        0%, 20%, 80%, 100% { transform: translate(0, 0); filter: none; }
+                        40%, 60% { transform: translate(32px, 12px); filter: url(#matrix-glitch-pixelate); opacity: 0.4; }
+                      }
+
+                      .matrix-left-heart {
+                        animation: decompileLeftHeart 6s cubic-bezier(0.15, 0.85, 0.35, 1) infinite;
                         transform-origin: 75px 115px;
                       }
-                      @keyframes disassembleLeftHeart {
-                        0%, 25%, 80%, 100% { transform: translate(0, 0) scale(1); filter: drop-shadow(0 0 2px rgba(239,68,68,0.4)); }
-                        40%, 60% { transform: translate(-18px, -18px) scale(0.85); filter: drop-shadow(0 0 8px rgba(239,68,68,0.8)); }
+                      @keyframes decompileLeftHeart {
+                        0%, 20%, 80%, 100% { transform: translate(0, 0) scale(1); filter: none; opacity: 1; }
+                        40%, 60% { transform: translate(-22px, -14px) scale(0.6); filter: url(#matrix-glitch-pixelate); opacity: 0.8; fill: #00ff66; }
                       }
 
-                      /* 6. Right Heart Eye - Floating towards upper-right inside face radius */
-                      .bot-right-heart {
-                        animation: disassembleRightHeart 6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+                      .matrix-right-heart {
+                        animation: decompileRightHeart 6s cubic-bezier(0.15, 0.85, 0.35, 1) infinite;
                         transform-origin: 125px 115px;
                       }
-                      @keyframes disassembleRightHeart {
-                        0%, 25%, 80%, 100% { transform: translate(0, 0) scale(1); filter: drop-shadow(0 0 2px rgba(239,68,68,0.4)); }
-                        40%, 60% { transform: translate(18px, -18px) scale(0.85); filter: drop-shadow(0 0 8px rgba(239,68,68,0.8)); }
+                      @keyframes decompileRightHeart {
+                        0%, 20%, 80%, 100% { transform: translate(0, 0) scale(1); filter: none; opacity: 1; }
+                        40%, 60% { transform: translate(22px, -14px) scale(0.6); filter: url(#matrix-glitch-pixelate); opacity: 0.8; fill: #00ff66; }
                       }
 
-                      /* 7. Cyber Grid Mouth - Drops down heavily towards bottom boundary and fades slightly */
-                      .bot-mouth {
-                        animation: disassembleMouth 6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+                      .matrix-mouth {
+                        animation: decompileMouth 6s cubic-bezier(0.15, 0.85, 0.35, 1) infinite;
                       }
-                      @keyframes disassembleMouth {
-                        0%, 25%, 80%, 100% { transform: translate(0, 0); opacity: 1; }
-                        40%, 60% { transform: translate(0, 22px); opacity: 0.7; }
+                      @keyframes decompileMouth {
+                        0%, 20%, 80%, 100% { transform: translate(0, 0); filter: none; opacity: 1; }
+                        40%, 60% { transform: translate(0, 26px); filter: url(#matrix-glitch-pixelate); opacity: 0.3; }
                       }
                     `}</style>
                   </defs>
 
-                  {/* GROUP 1: LEFT EAR ASSEMBLY */}
-                  <g className="bot-left-ear">
-                    <rect x="22" y="103" width="16" height="24" rx="4" fill="#8E8E93" />
-                    <rect x="34" y="93" width="6" height="44" rx="2" fill="#AEAEB2" />
+                  {/* LAYER 1: LEFT AUDIO EAR PARAMETER */}
+                  <g className="matrix-left-ear">
+                    <rect x="22" y="103" width="16" height="24" rx="4" fill="#6c6c72" />
+                    <rect x="34" y="93" width="6" height="44" rx="2" fill="#8e8e93" />
                   </g>
 
-                  {/* GROUP 2: RIGHT EAR ASSEMBLY */}
-                  <g className="bot-right-ear">
-                    <rect x="162" y="103" width="16" height="24" rx="4" fill="#8E8E93" />
-                    <rect x="160" y="107" width="4" height="16" rx="1" fill="#AEAEB2" />
+                  {/* LAYER 2: RIGHT AUDIO EAR PARAMETER */}
+                  <g className="matrix-right-ear">
+                    <rect x="162" y="103" width="16" height="24" rx="4" fill="#6c6c72" />
+                    <rect x="160" y="107" width="4" height="16" rx="1" fill="#8e8e93" />
                   </g>
 
-                  {/* GROUP 3: TOP ANTENNAS ASSEMBLY */}
-                  <g className="bot-antennas">
-                    <rect x="93" y="65" width="14" height="8" fill="#AEAEB2" />
-                    <path d="M100 65l-8-22h10l-6-14" stroke="#AEAEB2" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+                  {/* LAYER 3: TOP CORE MECHANICAL ANTENNA */}
+                  <g className="matrix-antennas">
+                    <rect x="93" y="65" width="14" height="8" fill="#8e8e93" />
+                    <path d="M100 65l-8-22h10l-6-14" stroke="#8e8e93" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+                    <circle cx="96" cy="25" r="8" fill="#00ff66" className="animate-ping origin-center" style={{ animationDuration: '3s' }} />
                     <circle cx="96" cy="25" r="8" fill="#FFE600" />
                   </g>
 
-                  {/* GROUP 4: MAIN HEAD SHELL (REFERENCES image_0.png shape) */}
-                  <g className="bot-face-shell">
-                    <path d="M40 115c0-35.346 26.852-64 60-64s60 28.654 60 64v5c0 22.091-17.909 40-40 40H80c-22.091 0-40-17.909-40-40v-5z" fill="#747478" />
-                    {/* Internal Depth Layer or Overlay */}
-                    <path d="M46 115c0-32 23-58 54-58s54 26 54 58v4c0 19-15 34-34 34H80c-19 0-34-15-34-34v-4z" fill="#636366" opacity="0.4" />
+                  {/* LAYER 4: MAIN SCALED BRAIN FRAME SHELL */}
+                  <g className="matrix-shell">
+                    <path d="M40 115c0-35.346 26.852-64 60-64s60 28.654 60 64v5c0 22.091-17.909 40-40 40H80c-22.091 0-40-17.909-40-40v-5z" fill="#48484a" />
+                    <path d="M46 115c0-32 23-58 54-58s54 26 54 58v4c0 19-15 34-34 34H80c-19 0-34-15-34-34v-4z" fill="#3a3a3c" opacity="0.6" />
                   </g>
 
-                  {/* GROUP 5: LEFT HEART EYE (REFERENCES image_0.png) */}
-                  <g className="bot-left-heart">
+                  {/* LAYER 5: COGNITIVE LEFT HEART DATA ENCLAVE */}
+                  <g className="matrix-left-heart">
                     <path d="M75 102c-3.5-4-9-4-12.5 0-3.5 4-3.5 10 0 14l12.5 12 12.5-12c3.5-4 3.5-10 0-14-3.5-4-9-4-12.5 0z" fill="#FF453A" />
                   </g>
 
-                  {/* GROUP 6: RIGHT HEART EYE (REFERENCES image_0.png) */}
-                  <g className="bot-right-heart">
+                  {/* LAYER 6: COGNITIVE RIGHT HEART DATA ENCLAVE */}
+                  <g className="matrix-right-heart">
                     <path d="M125 102c-3.5-4-9-4-12.5 0-3.5 4-3.5 10 0 14l12.5 12 12.5-12c3.5-4 3.5-10 0-14-3.5-4-9-4-12.5 0z" fill="#FF453A" />
                   </g>
 
-                  {/* GROUP 7: CYBER RECTANGLE TOOTH MOUTH (REFERENCES image_0.png mouth) */}
-                  <g className="bot-mouth">
+                  {/* LAYER 7: CYBER RECTANGLE TOOTH MATRIX MOUTH */}
+                  <g className="matrix-mouth">
                     <rect x="76" y="142" width="48" height="18" rx="9" fill="#1C1C1E" />
                     <rect x="94" y="142" width="12" height="7" rx="1" fill="#FFFFFF" />
                   </g>
