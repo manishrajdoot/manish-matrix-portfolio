@@ -6,10 +6,13 @@ export async function POST(req: Request) {
   try {
     const { messages } = await req.json();
     
-    if (!process.env.AI_API_KEY) {
+    // BACKUP FALLBACK LOGIC: Direct local matching if process env maps are out of sync
+    const activeApiKey = process.env.AI_API_KEY || "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";
+    
+    if (!activeApiKey) {
       return NextResponse.json({ 
         role: "assistant", 
-        content: `// OFFLINE MODE NODE: Please configure OpenRouter AI_API_KEY in env layers.` 
+        content: `// OFFLINE MODE NODE: Please configure OpenRouter API_KEY in env layers.` 
       });
     }
 
@@ -25,17 +28,16 @@ export async function POST(req: Request) {
       }))
     ];
 
-    // Hitting OpenRouter with a high-availability model to bypass structural traffic queues
+    // Hitting OpenRouter with explicitly verified header tokens
     const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
       method: "POST",
       headers: {
-        "Authorization": `Bearer ${process.env.AI_API_KEY}`,
+        "Authorization": `Bearer ${activeApiKey.trim()}`,
         "Content-Type": "application/json",
         "HTTP-Referer": "https://manishrajdoot.com", 
         "X-Title": "Manish Rajdoot Matrix Portfolio"
       },
       body: JSON.stringify({
-        // 🚀 ROUTING UPGRADE: Switched to high-availability free tier endpoint to completely smash spike demands
         model: "openchat/openchat-7b:free",
         messages: openRouterMessages,
         temperature: 0.7,
@@ -62,7 +64,6 @@ export async function POST(req: Request) {
     } 
     
     if (data.error) {
-      // Log failure frame tracking inside storage block
       const userText = messages[messages.length - 1]?.content || "Unknown Node";
       globalChatRegistry.unshift({
         id: `ERR-${Math.floor(1000 + Math.random() * 9000)}`,
