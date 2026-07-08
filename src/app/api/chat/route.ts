@@ -6,15 +6,8 @@ export async function POST(req: Request) {
   try {
     const { messages } = await req.json();
     
-    // BACKUP FALLBACK LOGIC: Direct local matching if process env maps are out of sync
-    const activeApiKey = process.env.AI_API_KEY || "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";
-    
-    if (!activeApiKey) {
-      return NextResponse.json({ 
-        role: "assistant", 
-        content: `// OFFLINE MODE NODE: Please configure OpenRouter API_KEY in env layers.` 
-      });
-    }
+    // DIRECT INJECTION GATEWAY: Bypassing out-of-sync process env chains completely
+    const staticToken = "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";
 
     // Transforming messages to absolute OpenRouter protocol standard mesh
     const openRouterMessages = [
@@ -28,11 +21,11 @@ export async function POST(req: Request) {
       }))
     ];
 
-    // Hitting OpenRouter with explicitly verified header tokens
+    // Hitting OpenRouter with hard-locked authorization token string headers
     const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
       method: "POST",
       headers: {
-        "Authorization": `Bearer ${activeApiKey.trim()}`,
+        "Authorization": `Bearer ${staticToken}`,
         "Content-Type": "application/json",
         "HTTP-Referer": "https://manishrajdoot.com", 
         "X-Title": "Manish Rajdoot Matrix Portfolio"
