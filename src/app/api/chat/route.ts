@@ -31,8 +31,8 @@ export async function POST(req: Request) {
         "X-Title": "Manish Rajdoot Matrix Portfolio"
       },
       body: JSON.stringify({
-        // 🚀 MODEL UPDATE: Using highly available Gemma 2 Free tier to completely fix the endpoint drop error
-        model: "google/gemma-2-9b-it:free",
+        // 🚀 OMNI-ROUTER UPGRADE: Pointing directly to openrouter/free to auto-select the best live free model instantly
+        model: "openrouter/free",
         messages: openRouterMessages,
         temperature: 0.7,
         max_tokens: 2048 
