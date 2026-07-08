@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import ContactForm from '@/components/ContactForm';
 import BlogModule from '@/components/BlogModule';
+import AIChatbubble from '@/components/AIChatbubble';
 
 interface Repo {
   id: number;
@@ -293,6 +294,8 @@ export default function Home() {
           </div>
         </div>
       )}
+
+      <AIChatbubble />
 
       <footer className="w-full border-t border-white/[0.02] bg-[#020206] py-6 flex justify-between items-center px-8 text-[9px] text-zinc-600 font-bold tracking-widest uppercase relative z-40 mt-16 select-none">
         <span>Framework Compiled Stable // 2026</span>
