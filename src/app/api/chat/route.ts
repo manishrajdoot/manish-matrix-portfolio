@@ -12,8 +12,7 @@ export async function POST(req: Request) {
       });
     }
 
-    // Existing context ko messages array ke start me strictly blend kar rahe hain
-    // Isse dynamic structural compatibility error 100% resolve ho jayega
+    // Dynamic contextual message mapping for standard v1beta interface
     const contextualMessages = [
       {
         role: 'user',
@@ -37,8 +36,9 @@ export async function POST(req: Request) {
       }
     };
 
+    // Switched backend engine safely back to v1beta for global flash architecture support
     const response = await fetch(
-      `https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=${process.env.AI_API_KEY}`,
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${process.env.AI_API_KEY}`,
       {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
