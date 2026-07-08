@@ -184,7 +184,7 @@ export default function ContactForm({ onClose }: ContactFormProps) {
         
         <div className="bg-[#050512] border border-white/[0.04] p-2.5 rounded-xl flex items-center justify-between gap-4">
           <span className="text-[9px] text-[#00ff66] font-mono font-bold uppercase tracking-wider">🛡️ KEY CHALLENGE: {captchaChallenge.token}</span>
-          <input required type="text" value={userCaptchaInput} onChange={(e) => userCaptchaInput(e.target.value)} placeholder="Decrypt" className="bg-[#03030c] border border-white/[0.08] focus:border-[#00ff66] text-xs p-2 rounded-lg text-white w-24 text-center font-mono" />
+          <input required type="text" value={userCaptchaInput} onChange={(e) => setUserCaptchaInput(e.target.value)} placeholder="Decrypt" className="bg-[#03030c] border border-white/[0.08] focus:border-[#00ff66] text-xs p-2 rounded-lg text-white w-24 text-center font-mono" />
         </div>
 
         <div className="space-y-2 pt-1">
