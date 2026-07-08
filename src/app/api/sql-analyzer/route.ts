@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { mockDatabase } from '@/data/dbMock';
+import { globalChatRegistry } from '@/data/analyticsStore'; // Successfully synced analytical ledger
 
 export async function POST(req: Request) {
   try {
@@ -11,23 +12,37 @@ export async function POST(req: Request) {
     }
 
     const cleanQuery = query.toLowerCase().trim();
-    let result = [...mockDatabase];
+    let result: any[] = [...mockDatabase];
     let executionType = "TABLE SCAN";
     let message = "Query executed successfully over linear database block.";
 
-    // Simple analytical parsing system
-    if (cleanQuery.includes('where')) {
-      executionType = "FILTER SCAN (INDEX RE-MAP)";
-      if (cleanQuery.includes('optimized')) {
-        result = mockDatabase.filter(p => p.status === 'optimized');
-      } else if (cleanQuery.includes('deprecated')) {
-        result = mockDatabase.filter(p => p.status === 'deprecated');
-      } else if (cleanQuery.includes('pending_index')) {
-        result = mockDatabase.filter(p => p.status === 'pending_index');
+    // 🛡️ SECRET LINK MATRIX LAYER: Intercepting query to fetch live tracking logs
+    if (cleanQuery.includes('chat_logs')) {
+      executionType = "ANALYTICS SYSTEM MEMORY SCAN";
+      message = "Matrix core decrypted secure chat activity ledger frames successfully.";
+      
+      // Map global cache registers to output block structure
+      result = globalChatRegistry.map(log => ({
+        id: log.id,
+        name: log.userPrompt, // Mapping custom dynamic text directly into rows safely
+        category: `RESP_LEN: ${log.responseLength}B`,
+        latency_ms: log.status === 'SUCCESS' ? 8 : 404
+      }));
+    } else {
+      // Standard workflow rules (Filters / Sorting maps)
+      if (cleanQuery.includes('where')) {
+        executionType = "FILTER SCAN (INDEX RE-MAP)";
+        if (cleanQuery.includes('optimized')) {
+          result = mockDatabase.filter(p => p.status === 'optimized');
+        } else if (cleanQuery.includes('deprecated')) {
+          result = mockDatabase.filter(p => p.status === 'deprecated');
+        } else if (cleanQuery.includes('pending_index')) {
+          result = mockDatabase.filter(p => p.status === 'pending_index');
+        }
+      } else if (cleanQuery.includes('order by')) {
+        executionType = "INDEX SORT OPERATION";
+        result = [...mockDatabase].sort((a, b) => a.latency_ms - b.latency_ms);
       }
-    } else if (cleanQuery.includes('order by')) {
-      executionType = "INDEX SORT OPERATION";
-      result = [...mockDatabase].sort((a, b) => a.latency_ms - b.latency_ms);
     }
 
     const endTime = performance.now();

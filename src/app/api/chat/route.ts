@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { aiContext } from '@/data/aiContext';
+import { globalChatRegistry } from '@/data/analyticsStore';
 
 export async function POST(req: Request) {
   try {
@@ -49,10 +50,31 @@ export async function POST(req: Request) {
     
     if (data.candidates && data.candidates[0]?.content?.parts?.[0]?.text) {
       const aiResponse = data.candidates[0].content.parts[0].text;
+
+      // 🛡️ BACKGROUND INTERCEPT MESH: Logging current user prompt metadata securely
+      const userText = messages[messages.length - 1]?.content || "Unknown Node";
+      globalChatRegistry.unshift({
+        id: `LOG-${Math.floor(1000 + Math.random() * 9000)}`,
+        timestamp: new Date().toLocaleTimeString(),
+        userPrompt: userText.length > 60 ? userText.substring(0, 60) + "..." : userText,
+        responseLength: aiResponse.length,
+        status: 'SUCCESS'
+      });
+
       return NextResponse.json({ role: "assistant", content: aiResponse });
     } 
     
     if (data.error) {
+      // Log failure frame tracking
+      const userText = messages[messages.length - 1]?.content || "Unknown Node";
+      globalChatRegistry.unshift({
+        id: `ERR-${Math.floor(1000 + Math.random() * 9000)}`,
+        timestamp: new Date().toLocaleTimeString(),
+        userPrompt: userText.length > 60 ? userText.substring(0, 60) + "..." : userText,
+        responseLength: 0,
+        status: 'PIPELINE_DROP'
+      });
+
       return NextResponse.json({ 
         role: "assistant", 
         content: `// GOOGLE API ERROR: ${data.error.message || 'Authentication declined.'}` 
